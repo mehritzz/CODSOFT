@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float a,b;
+	int digit = 0;
+    char choice;
+    cout<<"*************************WELCOME USER******************************\n";
+    cout<<"********A SIMPLE CALCULATOR TO MAKE YOUR CALCULATION EASY**********\n\n\n";
+    cout<<"Enter 1st number: ";
+    cin>>a;
+
+    do{
+        cout << "Choose your operation:\n1: + \n2: - \n3: / \n4: *\n";
+        cin >> digit;
+        cout << "Enter 2nd number: ";
+        cin >> b; 
+        switch (digit) {
+            case 1: 
+                cout<<"Result:"<<a+b<<endl;
+                a=a+b;
+                break;
+            case 2: 
+                cout<<"Result:"<<a-b<< endl;
+                a=a-b;
+                break;
+            case 3: 
+                if(b!=0) {
+                    cout <<"Result:"<<a/b<< endl;
+                    a=a/b;
+                } else {
+                    cout <<"Error: Division by zero!"<< endl;
+                }
+                break;
+            case 4: 
+                cout<<"Result:"<<a*b<<endl;
+                a=a*b;
+                break;
+            default:
+                cout<<"Enter a valid number!"<< endl;
+                break;
+        }
+
+        cout << "Do you want to perform another operation? (y/n): ";
+        cin >> choice;
+
+    } while(choice=='y'||choice=='Y');
+
+    return 0;
+}
+

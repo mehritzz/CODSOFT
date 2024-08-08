@@ -1,0 +1,115 @@
+//TIC_TAC_TOE
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+void draw_board(char*);
+void user1_moves(char* board_space,char user1);
+void user2_moves(char* board_space,char user2);
+bool check_winner(char* board_space,char z);
+bool isdraw(char* board_space);
+int main(){
+	char board_space[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
+	char user1='X';
+	char user2='O';
+	bool run=true;
+	
+	draw_board(board_space);
+	while(run){
+		user1_moves(board_space,user1);
+		system("cls");
+		draw_board(board_space);
+		if(check_winner(board_space,user1)){
+			cout<<"PLAYER1 wins!!!!!!!!!!!!!!";
+			break;
+		};
+		if(isdraw(board_space)){
+			cout<<"IT IS A TIE!!!!!!!!!!"<<endl;
+			run=false;
+			break;
+		}
+		user2_moves(board_space,user2);
+		system("cls");
+		draw_board(board_space);
+		if(check_winner(board_space,user2)){
+			cout<<"player2 wins";
+			break;
+		}
+		if(isdraw(board_space)){
+			cout<<"IT IS A TIE!!!!!!!"<<endl;
+			break;
+		}
+	}
+	return 0;
+}
+void draw_board(char* board_space)
+{
+	cout<<"          |            |           "<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<board_space[0]<<"\t  |"<<board_space[1]<<"\t       |"<<board_space[2]<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<"__________|____________|___________"<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<board_space[3]<<"\t  |"<<board_space[4]<<"\t       |"<<board_space[5]<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<"__________|____________|___________"<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<board_space[6]<<"\t  |"<<board_space[7]<<"\t       |"<<board_space[8]<<""<<endl;
+	cout<<"          |            |           "<<endl;
+	cout<<"          |            |           "<<endl;
+
+}
+void user1_moves(char* board_space,char user1){
+	int num;
+	cout<<"PLayer 1(X) chance to mark"<<endl;
+	cout<<"choose a number from 1-9 : ";
+	cin>>num;
+	num--;
+	do{
+		if(board_space[num]==' '){
+			board_space[num]=user1;
+			break;
+		}else{
+			cout<<"invalid choice";
+			break;
+		}
+	}while(!num>0||!num<8);}
+void user2_moves(char* board_space,char user2){
+	int numk;
+	cout<<"PLayer 2(O) chance to mark"<<endl;
+	cout<<"choose a number from 1-9 : ";
+	cin>>numk;
+	numk--;
+	do{
+		if(board_space[numk]==' '){
+			board_space[numk]=user2;
+			break;
+		}else {
+			cout<<"invalid choice";
+			break;
+		}
+	}while(!numk>0||!numk<8);
+}
+bool check_winner(char* board_space, char z){
+    for(int i = 0; i < 3; i++){
+        if(board_space[i*3] == z && board_space[i*3+1] == z && board_space[i*3+2] == z)
+            return true;
+        if(board_space[i]== z&& board_space[i + 3]==z && board_space[i+6]==z)
+            return true;
+    }
+    if(board_space[0]==z&&board_space[4]==z&&board_space[8]==z)
+        return true;
+    if(board_space[2]==z&&board_space[4]==z&&board_space[6]==z)
+        return true;
+
+    return false;
+}
+bool isdraw(char* board_space){
+	for(int i=0;i<9;i++){
+		if(board_space[i]==' ') return false;
+	}
+	return true;
+}
+	

@@ -1,0 +1,91 @@
+//NUMBER GUESSING GAME
+#include<iostream>
+using namespace std;
+#include <cstdlib>
+#include <ctime>
+int main(){
+	cout<<"********************************************WELCOME USER*********************************************\n"<<endl;
+	cout<<"This is a number guessing game."<<endl;
+	cout<<"You will be given chances according to the difficulty level."<<endl;
+	cout<<"In this game, you need to guess a number ranging from 0 to 100, and the computer will tell you if your guess is correct.";
+	cout<<"If your guess is too high or too low compared to the secret number, the computer will inform you, and you can try again.";
+	srand(time(0));//time gives the current time and at that time a different number us choosed.
+	int number=(rand()%100)+1;
+	int difficulty_level;
+	cout<<"Choose your difficulty level"<<"\n";
+	cout<<"1.Easy\n2.Medium\n3.Hard\n"<<endl;
+	cout<<"for exit press 0\n---->";
+	cin>>difficulty_level;
+	if(difficulty_level==1){
+		cout<<"You will get 10 chances to guess the number\n";
+		int chances=10;
+		do{
+			cout<<"Enter the guessed number:";
+	       	int g_num=0;
+		    cin>>g_num;
+			if(g_num==number){
+				cout<<"you guessed the correct number\n";
+				cout<<"YOU WINNNNN!!!!!!!!!!!";
+				break;
+			}else if(g_num>number){
+				cout<<"your predicted number is greater than the number\n";
+				cout<<"Guess it again\n";
+			}else if(g_num<number){
+				cout<<"your predicted number is smaller than the number\n";
+				cout<<"Guess again\n";
+			}else{
+				cout<<"enter a number in the range 0 to 100";
+			}
+			chances--;
+		}while(chances!=0);
+	}
+	else if(difficulty_level==2){
+		cout<<"You will get 5 chances to guess the number\n"<<endl;
+		int chances=5;
+		do{
+			cout<<"Enter the guessed number:";
+       		int g_num=0;
+	       	cin>>g_num;
+			if(g_num==number){
+				cout<<"you guessed the correct number\n";
+				cout<<"YOU WIN!!!!!!!!!!!";
+				break;
+			}else if(g_num>number){
+				cout<<"your predicted number is greater than the number\n";
+				cout<<"Guess it again\n";
+			}else if(g_num<number){
+				cout<<"your predicted number is smaller than the number\n";
+				cout<<"Guess again\n";
+			}else{
+				cout<<"enter a number in the range 0 to 100";
+			}
+			chances--;
+		}while(chances!=0);
+	}	if(difficulty_level==3){
+		cout<<"You will get 3 chances to guess the number\n"<<endl;
+		int chances=3;
+
+		do{
+			cout<<"Enter the guessed number:";
+		    int g_num=0;
+		    cin>>g_num;
+			if(g_num==number){
+				cout<<"you guessed the correct number";
+				cout<<"you win!!!!!!!!!!!";
+				break;
+			}else if(g_num>number){
+				cout<<"your predicted number is greater than the number\n";
+				cout<<"Guess it again\n";
+			}else if(g_num<number){
+				cout<<"your predicted number is smaller than the number\n";
+				cout<<"Guess again\n";
+			}else{
+				cout<<"enter a number in the range 0 to 100";
+			}
+			chances--;
+		}while(chances!=0);
+	}else if(difficulty_level==0){
+		exit(0);
+	}
+return 0;	
+}
